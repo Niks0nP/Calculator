@@ -39,10 +39,9 @@ tasks.register<JacocoReport>("jacocoTestReport") {
 }
 
 coveralls {
-    sourceDirs.addAll(
-        listOf(listOf("src/main/java", "src/main/kotlin").map { file(it) }.toString())
-    )
-    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+    sourceDirs.add("src/main/kotlin")
+    sourceDirs.add("src/main/java")
+    jacocoReportPath = file("${buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml").absolutePath
 }
 
 android {
