@@ -1,8 +1,16 @@
-language: android
-jdk: openjdk11
+language: generic
 
-before_script:
+dist: focal
+
+before_install:
+  - sudo apt update
+  - sudo apt install -y default-jdk
+  - curl -s https://get.sdkman.io | bash
+  - source "$HOME/.sdkman/bin/sdkman-init.sh"
+  - sdk install kotlin
   - chmod +x gradlew
 
 script:
+  - kotlinc src -include-runtime -d app.jar
+  - java -jar app.jar
   - ./gradlew clean testDebugUnitTest jacocoTestReport coveralls
