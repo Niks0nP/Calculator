@@ -1,0 +1,8 @@
+language: android
+jdk: openjdk11
+
+before_script:
+  - chmod +x gradlew
+
+script:
+  - ./gradlew clean testDebugUnitTest jacocoTestReport coveralls
