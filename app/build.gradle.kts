@@ -37,6 +37,17 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"
     ))
 }
+tasks.named("coveralls") {
+    dependsOn("jacocoTestReport")
+    doFirst {
+        val report = file("$buildDir/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
+        if (!report.exists()) {
+            throw GradleException("Coveralls: Jacoco report not found at ${report.absolutePath}")
+        } else {
+            println("Coveralls: Found Jacoco report at ${report.absolutePath}")
+        }
+    }
+}
 
 coveralls {
     sourceDirs.add("src/main/kotlin")
