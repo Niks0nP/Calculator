@@ -30,6 +30,12 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         exclude(fileFilter)
     }
 
+    val kotlinDebugTree = fileTree("${buildDir}/tmp/kotlin-classes/debug") {
+        exclude(fileFilter)
+    }
+
+    classDirectories.setFrom(files(debugTree, kotlinDebugTree))
+
     sourceDirectories.setFrom(files("src/main/java", "src/main/kotlin"))
     classDirectories.setFrom(files(debugTree))
     executionData.setFrom(fileTree(buildDir).include(
@@ -50,7 +56,7 @@ tasks.named("coveralls") {
 }
 
 coveralls {
-    sourceDirs.addAll(listOf("src/main/kotlin", "src/main/java"))
+    sourceDirs.addAll(listOf("${project.projectDir}/src/main/kotlin", "${project.projectDir}/src/main/java"))
     jacocoReportPath = file("build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml").absolutePath
 }
 
