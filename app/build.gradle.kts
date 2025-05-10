@@ -50,8 +50,7 @@ tasks.named("coveralls") {
 }
 
 coveralls {
-    sourceDirs.add("src/main/kotlin")
-    sourceDirs.add("src/main/java")
+    sourceDirs.addAll(listOf("src/main/kotlin", "src/main/java"))
     jacocoReportPath = file("build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml").absolutePath
 }
 
