@@ -211,6 +211,8 @@ fun ThirdRow(
         Button(
             modifier = Modifier.weight(0.25f).fillMaxHeight(),
             onClick = {
+
+
                 if (!state.isOperationEntered) {
                     viewModel.onAction(MainIntent.SetFirstDigit(7.0))
                 }
