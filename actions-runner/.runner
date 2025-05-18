@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 21,
+  "agentName": "Niks0n_PC_Runner",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus25.actions.githubusercontent.com/I4k7HKTD2DYrjhRQJW5dzS47eKfW4fZ5SEZHrN5FtmVEAiyYj7/",
+  "gitHubUrl": "https://github.com/Niks0nP/MobileApp",
+  "workFolder": "runner_folder"
+}
