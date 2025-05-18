@@ -1,11 +1,27 @@
-language: android
-jdk: openjdk17
-dist: focal
+name: Java CI with Gradle
 
-before_install:
-  - chmod +x gradlew
-  - yes | sdkmanager --licenses
-  - sdkmanager "build-tools;35.0.0" "platforms;android-35"
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-script:
-  - ./gradlew clean testDebugUnitTest jacocoTestReport coveralls
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        run: chmod +x gradlew
+
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
