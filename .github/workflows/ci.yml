@@ -1,4 +1,4 @@
-name: Kotlin CI with Gradle
+name: Add new UI elements
 
 on:
   workflow_dispatch:
